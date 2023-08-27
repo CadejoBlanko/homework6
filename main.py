@@ -2,7 +2,7 @@ import sqlite3
 from faker import Faker
 import random
 
-conn = sqlite3.connect("university.db")
+conn = sqlite3.connect("bd.db")
 cursor = conn.cursor()
 
 create_tables_query = """
