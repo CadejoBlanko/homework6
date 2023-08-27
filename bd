@@ -1,0 +1,33 @@
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(30),
+  groups_id INT,
+  FOREIGN KEY (groups_id) REFERENCES groups(id)
+);
+
+CREATE TABLE groups (
+  id INT PRIMARY KEY,
+  group_name VARCHAR(30),
+  subjects VARCHAR(30)
+);
+
+CREATE TABLE teachers (
+  id INT PRIMARY KEY,
+  name VARCHAR(30)
+);
+
+CREATE TABLE subjects (
+  id INT PRIMARY KEY,
+  subject_name VARCHAR(30),
+  teacher_id INT,
+  FOREIGN KEY (teacher_id) REFERENCES teachers(id)
+);
+
+CREATE TABLE evaluations (
+  student_id INT,
+  subject_id INT,
+  evaluation INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (student_id) REFERENCES students(id),
+  FOREIGN KEY (subject_id) REFERENCES subjects(id)
+);
